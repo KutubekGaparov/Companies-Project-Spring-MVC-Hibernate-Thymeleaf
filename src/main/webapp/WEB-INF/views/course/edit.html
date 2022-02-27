@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+edit
+
+<form th:method="PATCH" th:action="@{/run/{id}(id=${course.getId()})}" th:object="${course}">
+    <label for="courseName">Enter name</label>
+    <input type="text" th:field="*{courseName}" id="courseName"/>
+    <br>
+    <label for="locatedCountry">Enter name</label>
+    <input type="text" th:field="*{duration}" id="locatedCountry"/>
+    <br>
+    <label for="company">Enter name</label>
+    <input type="text" th:field="*{duration}" id="company"/>
+    <br>
+    <input type="submit" value="Update!!"/>
+</form>
+
+</body>
+</html>
