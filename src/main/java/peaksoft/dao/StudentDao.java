@@ -13,7 +13,6 @@ public interface StudentDao {
 
     List<Student> getAllStudent();
 
-    void cleanStudentTable();
+    void updateStudent(long id,Student student);
 
-    void updateStudent(Student student);
 }

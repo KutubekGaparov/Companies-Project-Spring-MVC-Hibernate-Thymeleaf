@@ -37,12 +37,11 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public void cleanTeacherTable() {
-        entityManager.clear();
-    }
-
-    @Override
-    public void updateTeacher(Teacher teacher) {
+    public void updateTeacher(long id ,Teacher teacher) {
+        Teacher teacher1 = getById(id);
+        teacher1.setFirstName(teacher.getFirstName());
+        teacher1.setLastName(teacher.getLastName());
+        teacher1.setEmail(teacher.getEmail());
         entityManager.merge(teacher);
     }
 }

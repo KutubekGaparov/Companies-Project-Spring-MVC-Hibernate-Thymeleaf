@@ -16,5 +16,5 @@ public interface GroupDao {
 
     void cleanGroupTable();
 
-    void updateGroup(Group group);
+    void updateGroup(long id ,Group group);
 }

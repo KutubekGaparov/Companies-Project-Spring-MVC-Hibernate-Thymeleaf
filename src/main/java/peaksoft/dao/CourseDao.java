@@ -15,8 +15,6 @@ public interface CourseDao {
 
     List<Course> getAllCourse();
 
-    void cleanCourseTable();
-
-    void updateCourse(Course course);
+    void updateCourse(long id, Course course);
 
 }

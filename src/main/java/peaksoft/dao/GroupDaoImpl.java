@@ -2,7 +2,6 @@ package peaksoft.dao;
 
 import org.springframework.stereotype.Repository;
 import peaksoft.model.Group;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -42,7 +41,11 @@ public class GroupDaoImpl implements GroupDao{
     }
 
     @Override
-    public void updateGroup(Group group) {
+    public void updateGroup(long id, Group group) {
+        Group group1 = getById(id);
+        group1.setGroupName(group.getGroupName());
+        group1.setDateOfStart(group.getDateOfStart());
+        group1.setDateOfFinish(group.getDateOfFinish());
         entityManager.merge(group);
     }
 }

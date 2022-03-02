@@ -8,15 +8,16 @@
 new
 <form th:method="POST" th:action="@{save}" th:object="${course}">
 
-    <label for="companyName">Enter Country</label>
-    <input type="text" th:field="*{courseName}" id="companyName"/>
+    <label for="courseName">Enter CourseName</label>
+    <input type="text" th:field="*{courseName}" id="courseName"/>
     <br>
-    <label for="locationCountry">Enter Name</label>
+    <label for="locationCountry">Enter Duration</label>
     <input type="text" th:field="*{duration}" id="locationCountry"/>
     <br>
-    <label for="company">Enter Name</label>
-    <input type="text" th:field="*{company}" id="company"/>
+<!--    <label for="companyName">Enter Duration</label>-->
+<!--    <input type="text" th:field="*{company.id}" id="companyName"/>-->
     <br>
+
     <input type="submit" value="Create">
 
 </form>

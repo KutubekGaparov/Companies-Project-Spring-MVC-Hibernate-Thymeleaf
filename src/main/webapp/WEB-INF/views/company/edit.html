@@ -8,14 +8,15 @@
 <body>
 
 <form th:method="PATCH" th:action="@{/run/{id}(id=${company.getId()})}" th:object="${company}">
+
     <label for="companyName">Enter name</label>
     <input type="text" th:field="*{companyName}" id="companyName"/>
     <br>
     <label for="locatedCountry">Enter name</label>
     <input type="text" th:field="*{locatedCountry}" id="locatedCountry"/>
     <br>
-    <input type="submit" value="Update!!"/>
 
+    <input type="submit" value="Update!!"/>
 </form>
 
 </body>

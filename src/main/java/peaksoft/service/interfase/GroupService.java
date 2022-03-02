@@ -1,6 +1,5 @@
 package peaksoft.service.interfase;
 
-import peaksoft.model.Course;
 import peaksoft.model.Group;
 
 import java.util.List;
@@ -15,7 +14,5 @@ public interface GroupService {
 
     List<Group> getAllGroup();
 
-    void cleanGroupTable();
-
-    void updateGroup(Group group);
+    void updateGroup(long id, Group group);
 }

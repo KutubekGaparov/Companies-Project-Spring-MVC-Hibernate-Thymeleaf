@@ -8,15 +8,24 @@
 <body>
 
 <form th:method="POST" th:action="@{save}" th:object="${company}">
+    <table>
 
-    <label for="companyName">Enter Country</label>
-    <input type="text" th:field="*{companyName}" id="companyName"/>
-    <br>
-    <label for="locationCountry">Enter Name</label>
-    <input type="text" th:field="*{locatedCountry}" id="locationCountry"/>
-    <br>
-<input type="submit" value="Create">
+        <tr>
+            <th>companyName</th>
+            <th>locatedCountry</th>
+        </tr>
+        <tr>
+            <td><label for="companyName"></label>
+                <input type="text" th:field="*{companyName}" id="companyName"/>
+            </td>
+            <td><label for="locationCountry"></label>
+                <input type="text" th:field="*{locatedCountry}" id="locationCountry"/>
+            </td>
 
+        </tr>
+
+    </table>
+    <input type="submit" value="Create">
 </form>
 
 </body>

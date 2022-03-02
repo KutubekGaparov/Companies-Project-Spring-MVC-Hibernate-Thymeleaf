@@ -17,7 +17,7 @@ public class Course {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "group_course",
             joinColumns = @JoinColumn(name ="group_id" ),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
@@ -65,6 +65,22 @@ public class Course {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public List<Group> getGroup() {
+        return group;
+    }
+
+    public void setGroup(List<Group> group) {
+        this.group = group;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override

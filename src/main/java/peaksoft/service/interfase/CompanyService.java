@@ -14,7 +14,5 @@ public interface CompanyService {
 
     public List<Company> getAllCompany();
 
-    public void cleanCompanyTable();
-
     void update(long id,Company company);
 }

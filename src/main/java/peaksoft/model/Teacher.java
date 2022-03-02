@@ -13,7 +13,7 @@ public class Teacher {
     private String email;
 
     @OneToOne(mappedBy = "teacher",
-            cascade = CascadeType.ALL)
+            cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
     private Course course;
 
     public Teacher(String firstName, String lastName, String email) {
@@ -64,7 +64,6 @@ public class Teacher {
     public void setCourse(Course course) {
         this.course = course;
     }
-
     @Override
     public String toString() {
         return "Teacher{" +

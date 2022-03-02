@@ -14,7 +14,5 @@ public interface StudentService {
 
     List<Student> getAllStudent();
 
-    void cleanStudentTable();
-
-    void updateStudent(Student student);
+    void updateStudent(long id,Student student);
 }

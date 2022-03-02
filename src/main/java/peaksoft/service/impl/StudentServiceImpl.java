@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public class StudentServiceImpl implements StudentService {
 
-    private StudentDao dao;
+    private final StudentDao dao;
 
     @Autowired
     public StudentServiceImpl(StudentDao dao) {
@@ -40,13 +40,10 @@ public class StudentServiceImpl implements StudentService {
         return dao.getAllStudent();
     }
 
-    @Override
-    public void cleanStudentTable() {
-        dao.cleanStudentTable();
-    }
 
     @Override
-    public void updateStudent(Student student) {
-        dao.updateStudent(student);
+    public void updateStudent( long id,Student student) {
+
+        dao.updateStudent(id,student);
     }
 }

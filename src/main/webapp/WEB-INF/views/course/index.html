@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
-index
-<div th:each="course: ${new}">
-    <a th:href="@{/new/{id}(id=${course.getId()})}"
-       th:text="${course.getId() + ' , ' +course.getCourseName() + ' , ' + course.getDuration()+ ' , ' + course.getCompany()}"> company</a>
-</div>
-<br>
+<table >
+    <tr>
+        <th>Course</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="course: ${axa}">
+    <tr>
+        <td>
+            <a th:href="@{/api/{id}(id=${course.getId()})}"
+               th:text="${course.getCourseName()}">
+                course</a>
+        </td>
+        <td>
+            <a th:href="@{/api/{id}/edit(id=${course.getId()})}">UPDATE</a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/api/{id}(id =${course.getId()})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 <hr>
-
-<a href="/new/new">Create new Company</a>
+<a href="/api/news">Create new Course</a>
+<hr>
+<a href="/run">Main</a>
 
 </body>
 </html>

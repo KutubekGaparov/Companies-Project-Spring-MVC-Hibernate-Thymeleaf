@@ -41,11 +41,6 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void cleanCompanyTable() {
-        dao.cleanCompanyTable();
-    }
-
-    @Override
     public void update(long id,Company company) {
         dao.update(id,company);
     }

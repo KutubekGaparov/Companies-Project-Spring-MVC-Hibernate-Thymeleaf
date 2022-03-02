@@ -67,7 +67,6 @@ public class Student {
     public void setStudyFormat(StudyFormat studyFormat) {
         this.studyFormat = studyFormat;
     }
-
     public Group getGroup() {
         return groups;
     }

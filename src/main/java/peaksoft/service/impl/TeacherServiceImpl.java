@@ -40,13 +40,10 @@ public class TeacherServiceImpl implements TeacherService {
         return dao.getAllTeacher();
     }
 
-    @Override
-    public void cleanTeacherTable() {
-        dao.cleanTeacherTable();
-    }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
-        dao.updateTeacher(teacher);
+    public void updateTeacher(long id , Teacher teacher) {
+
+        dao.updateTeacher(id,teacher);
     }
 }

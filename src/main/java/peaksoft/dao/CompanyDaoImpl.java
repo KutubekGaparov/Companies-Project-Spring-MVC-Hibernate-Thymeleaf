@@ -35,11 +35,6 @@ public class CompanyDaoImpl implements CompanyDao {
         return entityManager.createQuery("select c from Company c", Company.class).getResultList();
     }
 
-    @Override
-    public void cleanCompanyTable() {
-        entityManager.clear();
-    }
-
      @Override
     public void update(long id, Company company) {
         Company company1=getById(id);

@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
+<table>
+    <tr>
+        <th>Company</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="company: ${run}">
+    <tr>
+        <td>
+            <div>
+                <a th:href="@{/run/{id}(id=${company.getId()})}"
+                   th:text="${company.getCompanyName}">company</a>
+            </div>
+        </td>
+        <td>
+            <a class="button" th:href="@{/run/{id}/edit(id=${company.getId()})}">Update</a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/run/{id}(id =${company.getId()})}">
+                <input class="button" type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-<div th:each="company: ${run}">
-    <a th:href="@{/run/{id}(id=${company.getId()})}"
-       th:text="${company.getId() + ' , ' +company.getCompanyName + ' , ' + company.getLocatedCountry}"> company</a>
-</div>
-<br>
+
+
 <hr>
-
 <a href="/run/new">Create new Company</a>
-
 </body>
 </html>

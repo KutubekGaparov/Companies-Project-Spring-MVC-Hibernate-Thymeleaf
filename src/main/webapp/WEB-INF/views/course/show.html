@@ -3,20 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
-show
-<p th:text="${show.getId()}"></p>
-<p th:text="${show.getCourseName()}"></p>
-<p th:text="${show.getDuration()}"></p>
-<p th:text="${show.getCompany()()}"></p>
 
-<a th:href="@{/run/{id}/edit(id=${show.getId()})}">UPDATE</a>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>CourseName</th>
+        <th>Duration</th>
 
-<form th:method="DELETE" th:action="@{/run/{id}(id =${show.getId()})}">
-
-    <input type="submit" value="Delete"/>
-</form>
-
+        <th>Groups</th>
+    </tr>
+    <tbody>
+    <tr>
+        <td>
+            <p th:text="${show.getId()}"></p>
+        </td>
+        <td>
+            <p th:text="${show.getCourseName()}"></p>
+        </td>
+        <td>
+            <p th:text="${show.getDuration()}"></p>
+        </td>
+        <td>
+            <a href="/groups">Groups</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a href="/api">Back</a>
 </body>
 </html>
+

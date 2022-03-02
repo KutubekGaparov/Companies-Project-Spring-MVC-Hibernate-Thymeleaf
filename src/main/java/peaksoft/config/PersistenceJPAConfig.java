@@ -21,6 +21,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("peaksoft")
 public class PersistenceJPAConfig {
+
     private final Environment env;
 
     public PersistenceJPAConfig(Environment env) {

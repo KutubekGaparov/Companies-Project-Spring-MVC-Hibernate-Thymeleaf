@@ -19,20 +19,20 @@ public class CompanyController {
     }
 
     @GetMapping()
-    public String index(Model model){
-        model.addAttribute("run",service.getAllCompany());
+    public String index(Model model) {
+        model.addAttribute("run", service.getAllCompany());
         return "/company/index";
     }
 
     @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") int id, Model model) {
+    public String showUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("show", service.getById(id));
         return "/company/show";
     }
 
     @GetMapping("/new")
-    public String company(Model model){
-        model.addAttribute("company",new Company());
+    public String company(Model model) {
+        model.addAttribute("company", new Company());
         return "/company/addCompany";
     }
 
@@ -49,13 +49,13 @@ public class CompanyController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("company")  Company company ,@PathVariable("id") long id) {
+    public String update(@ModelAttribute("company") Company company, @PathVariable("id") long id) {
         service.update(id, company);
         return "redirect:/run";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id" ) int id){
+    public String delete(@PathVariable("id") long id) {
         service.removeCompanyById(id);
         return "redirect:/run";
     }

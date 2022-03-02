@@ -41,12 +41,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void cleanGroupTable() {
-        dao.cleanGroupTable();
-    }
-
-    @Override
-    public void updateGroup(Group group) {
-        dao.updateGroup(group);
+    public void updateGroup(long id, Group group) {
+        dao.updateGroup( id,group);
     }
 }

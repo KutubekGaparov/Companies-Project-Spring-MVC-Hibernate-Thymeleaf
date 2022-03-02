@@ -1,12 +1,13 @@
 package peaksoft.dao;
 
 import peaksoft.model.Company;
+import peaksoft.model.Course;
 
 import java.util.List;
 
 public interface CompanyDao {
 
-    Company  saveCompany(Company company);
+    Company saveCompany(Company company);
 
     void removeCompanyById(long id);
 
@@ -14,9 +15,7 @@ public interface CompanyDao {
 
     List<Company> getAllCompany();
 
-    void cleanCompanyTable();
-
-    void update(long id,Company company);
+    void update(long id, Company company);
 
 
 }

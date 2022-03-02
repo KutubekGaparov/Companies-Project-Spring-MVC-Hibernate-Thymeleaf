@@ -12,7 +12,5 @@ public interface TeacherDao {
 
     List<Teacher> getAllTeacher();
 
-    void cleanTeacherTable();
-
-    void updateTeacher(Teacher teacher);
+    void updateTeacher(long id,Teacher teacher);
 }

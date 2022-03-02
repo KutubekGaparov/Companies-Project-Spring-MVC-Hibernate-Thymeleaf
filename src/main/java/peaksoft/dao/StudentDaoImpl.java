@@ -37,12 +37,12 @@ public class StudentDaoImpl implements StudentDao{
     }
 
     @Override
-    public void cleanStudentTable() {
-        entityManager.clear();
-    }
-
-    @Override
-    public void updateStudent(Student student) {
+    public void updateStudent(long id, Student student) {
+        Student student1 = getById(id);
+        student1.setFirstName(student.getFirstName());
+        student1.setLastName(student.getLastName());
+        student1.setEmail(student.getEmail());
+        student1.setStudyFormat(student.getStudyFormat());
         entityManager.merge(student);
     }
 }
