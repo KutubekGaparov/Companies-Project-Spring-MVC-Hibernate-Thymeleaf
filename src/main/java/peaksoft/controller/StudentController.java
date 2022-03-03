@@ -8,7 +8,7 @@ import peaksoft.model.Student;
 import peaksoft.service.interfase.StudentService;
 
 @Controller
-@RequestMapping("/xaxa")
+@RequestMapping("/students")
 public class StudentController {
 
     private final StudentService service;
@@ -20,43 +20,37 @@ public class StudentController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("xaxa", service.getAllStudent());
-        return "/student/index";
-    }
-
-    @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") long id, Model model) {
-        model.addAttribute("show", service.getById(id));
-        return "/student/show";
+        model.addAttribute("students", service.getAllStudent());
+        return "/student/student-page";
     }
 
     @GetMapping("/new")
-    public String company(Model model) {
+    public String saveStudent(Model model) {
         model.addAttribute("student", new Student());
-        return "/student/addStudent";
+        return "/student/newStudent";
     }
 
     @PostMapping("/save")
-    public String getCompany(@ModelAttribute("student") Student student) {
+    public String createStudent(@ModelAttribute("student") Student student) {
         service.saveStudent(student);
-        return "redirect:/xaxa";
+        return "redirect:/students";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
         model.addAttribute("student", service.getById(id));
-        return "/student/edit";
+        return "/student/update";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("student") Student student, @PathVariable("id") long id) {
         service.updateStudent(id, student);
-        return "redirect:/xaxa";
+        return "redirect:/students";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
+    public String delete(@PathVariable("id") Long id) {
         service.removeStudentById(id);
-        return "redirect:/xaxa";
+        return "redirect:/students";
     }
 }

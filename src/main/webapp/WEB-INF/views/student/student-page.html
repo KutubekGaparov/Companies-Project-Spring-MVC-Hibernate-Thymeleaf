@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody th:each="student: ${students}">
+    <tr>
+        <td>
+            <p th:text="${student.getId()}"></p>
+        </td>
+        <td>
+            <p th:text="${student.getFirstName()}"></p>
+        </td>
+        <td>
+            <p th:text="${student.getLastName()}"></p>
+        </td>
+        <td>
+            <p th:text="${student.getEmail()}"></p>
+        </td>
+        <td>
+            <a th:href="@{/students/{id}/edit(id=${student.getId()})}">
+                <input type="submit" value="Update">
+            </a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/students/{id}(id =${student.getId()})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<a href="/students/new">Create new Student</a>
+<br>
+<a href="/groups">Back</a>
+</body>
+</html>

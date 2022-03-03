@@ -1,5 +1,7 @@
 package peaksoft.model;
 
+import peaksoft.model.enums.StudyFormat;
+
 import javax.persistence.*;
 
 @Entity
@@ -67,6 +69,7 @@ public class Student {
     public void setStudyFormat(StudyFormat studyFormat) {
         this.studyFormat = studyFormat;
     }
+
     public Group getGroup() {
         return groups;
     }
@@ -75,9 +78,14 @@ public class Student {
         this.groups = group;
     }
 
-    public enum StudyFormat {
-        ONLINE,OFFLINE
+    public Group getGroups() {
+        return groups;
     }
+
+    public void setGroups(Group groups) {
+        this.groups = groups;
+    }
+
 
     @Override
     public String toString() {

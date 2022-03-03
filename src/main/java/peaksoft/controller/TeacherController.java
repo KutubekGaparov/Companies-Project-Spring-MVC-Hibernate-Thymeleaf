@@ -20,14 +20,8 @@ public class TeacherController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("god", service.getAllTeacher());
-        return "/teacher/index";
-    }
-
-    @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") long id, Model model) {
-        model.addAttribute("show", service.getById(id));
-        return "/teacher/show";
+        model.addAttribute("good", service.getAllTeacher());
+        return "/teacher/teacher-page";
     }
 
     @GetMapping("/newTeacher")
@@ -45,18 +39,18 @@ public class TeacherController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
         model.addAttribute("teacher", service.getById(id));
-        return "/teacher/edit";
+        return "/teacher/update";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("course") Teacher teacher, @PathVariable("id") long id) {
+    public String update(@ModelAttribute("teacher") Teacher teacher, @PathVariable("id") long id) {
         service.updateTeacher(id, teacher);
-        return "redirect:/api";
+        return "redirect:/good";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
         service.removeTeacherById(id);
-        return "redirect:/api";
+        return "redirect:/good";
     }
 }

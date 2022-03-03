@@ -21,19 +21,13 @@ public class GroupController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("addGroup", service.getAllGroup());
-        return "/group1/index";
-    }
-
-    @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") long id, Model model) {
-        model.addAttribute("newGr", service.getById(id));
-        return "/group1/show";
+        return "/group/group-page";
     }
 
     @GetMapping("/newGroups")
     public String company(Model model) {
         model.addAttribute("groups", new Group());
-        return "/group1/newGroup";
+        return "/group/newGroup";
     }
 
     @PostMapping("/saveGr")
@@ -45,7 +39,7 @@ public class GroupController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
         model.addAttribute("groups", service.getById(id));
-        return "/group1/edit";
+        return "/group/update";
     }
 
     @PatchMapping("/{id}")

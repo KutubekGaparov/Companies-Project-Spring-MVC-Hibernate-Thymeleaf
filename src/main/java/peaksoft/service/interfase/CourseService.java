@@ -1,5 +1,6 @@
 package peaksoft.service.interfase;
 
+import peaksoft.model.Company;
 import peaksoft.model.Course;
 
 import java.util.List;

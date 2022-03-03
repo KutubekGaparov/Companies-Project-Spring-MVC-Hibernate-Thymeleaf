@@ -1,6 +1,7 @@
 package peaksoft.dao;
 
 import org.springframework.stereotype.Repository;
+import peaksoft.model.Student;
 import peaksoft.model.Teacher;
 
 import javax.persistence.EntityManager;
@@ -23,7 +24,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void removeTeacherById(long id) {
-        entityManager.remove(id);
+        entityManager.remove(getById(id));
     }
 
     @Override

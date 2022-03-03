@@ -14,10 +14,12 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyDao dao;
+
     @Autowired
     public CompanyServiceImpl(CompanyDao dao) {
         this.dao = dao;
     }
+
 
     @Override
     public Company saveCompany(Company company) {

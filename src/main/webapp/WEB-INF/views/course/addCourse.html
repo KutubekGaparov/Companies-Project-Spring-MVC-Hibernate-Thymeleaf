@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-new
+
 <form th:method="POST" th:action="@{save}" th:object="${course}">
 
     <label for="courseName">Enter CourseName</label>
@@ -14,10 +14,7 @@ new
     <label for="locationCountry">Enter Duration</label>
     <input type="text" th:field="*{duration}" id="locationCountry"/>
     <br>
-<!--    <label for="companyName">Enter Duration</label>-->
-<!--    <input type="text" th:field="*{company.id}" id="companyName"/>-->
     <br>
-
     <input type="submit" value="Create">
 
 </form>

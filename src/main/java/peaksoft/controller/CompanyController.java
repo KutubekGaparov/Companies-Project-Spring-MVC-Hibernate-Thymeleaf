@@ -8,7 +8,7 @@ import peaksoft.model.Company;
 import peaksoft.service.interfase.CompanyService;
 
 @Controller
-@RequestMapping("/run")
+@RequestMapping
 public class CompanyController {
 
     private final CompanyService service;
@@ -18,46 +18,40 @@ public class CompanyController {
         this.service = service;
     }
 
-    @GetMapping()
-    public String index(Model model) {
+    @GetMapping("/")
+    public String getAllCompany(Model model) {
         model.addAttribute("run", service.getAllCompany());
-        return "/company/index";
+        return "/company/main_page";
     }
 
-    @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") long id, Model model) {
-        model.addAttribute("show", service.getById(id));
-        return "/company/show";
-    }
-
-    @GetMapping("/new")
-    public String company(Model model) {
+    @GetMapping("/newCompany")
+    public String newCompany(Model model) {
         model.addAttribute("company", new Company());
         return "/company/addCompany";
     }
 
     @PostMapping("/save")
-    public String getCompany(@ModelAttribute("company") Company company) {
+    public String saveCompany(@ModelAttribute("company") Company company) {
         service.saveCompany(company);
-        return "redirect:/run";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") long id) {
+    public String getById(Model model, @PathVariable("id") long id) {
         model.addAttribute("company", service.getById(id));
-        return "/company/edit";
+        return "company/update";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("company") Company company, @PathVariable("id") long id) {
         service.update(id, company);
-        return "redirect:/run";
+        return "redirect:/";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
         service.removeCompanyById(id);
-        return "redirect:/run";
+        return "redirect:/";
     }
 
 }

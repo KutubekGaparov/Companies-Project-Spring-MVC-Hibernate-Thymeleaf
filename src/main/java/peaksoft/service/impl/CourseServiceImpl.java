@@ -3,6 +3,7 @@ package peaksoft.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.CourseDao;
+import peaksoft.model.Company;
 import peaksoft.model.Course;
 import peaksoft.service.interfase.CourseService;
 

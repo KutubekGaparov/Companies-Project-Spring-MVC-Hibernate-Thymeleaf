@@ -26,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void removeStudentById(long id) {
+    public void removeStudentById(Long id) {
         dao.removeStudentById(id);
     }
 

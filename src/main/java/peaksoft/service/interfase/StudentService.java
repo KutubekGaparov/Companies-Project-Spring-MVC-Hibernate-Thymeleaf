@@ -8,7 +8,7 @@ import java.util.List;
 public interface StudentService {
     Student saveStudent(Student student);
 
-    void removeStudentById(long id);
+    void removeStudentById(Long id);
 
     Student getById(long id);
 

@@ -22,8 +22,9 @@ public class StudentDaoImpl implements StudentDao{
     }
 
     @Override
-    public void removeStudentById(long id) {
-        entityManager.remove(id);
+    public void removeStudentById(Long id) {
+
+        entityManager.remove(getById(id));
     }
 
     @Override
