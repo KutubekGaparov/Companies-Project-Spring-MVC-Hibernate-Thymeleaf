@@ -12,8 +12,8 @@ public class Teacher {
     private String lastName;
     private String email;
 
-    @OneToOne(mappedBy = "teacher",
-            cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "course_id")
     private Course course;
 
     public Teacher(String firstName, String lastName, String email) {

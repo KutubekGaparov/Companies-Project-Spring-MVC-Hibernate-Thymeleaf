@@ -9,13 +9,13 @@ public interface CompanyDao {
 
     Company saveCompany(Company company);
 
-    void removeCompanyById(long id);
+    void removeCompanyById(Long id);
 
-    Company getById(long id);
+    Company getById(Long id);
 
     List<Company> getAllCompany();
 
-    void update(long id, Company company);
+    void update(Long id, Company company);
 
 
 }

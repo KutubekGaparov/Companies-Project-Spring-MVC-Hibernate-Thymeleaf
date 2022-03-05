@@ -26,12 +26,12 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void removeTeacherById(long id) {
+    public void removeTeacherById(Long id) {
         dao.removeTeacherById(id);
     }
 
     @Override
-    public Teacher getById(long id) {
+    public Teacher getById(Long id) {
         return dao.getById(id);
     }
 
@@ -42,7 +42,7 @@ public class TeacherServiceImpl implements TeacherService {
 
 
     @Override
-    public void updateTeacher(long id , Teacher teacher) {
+    public void updateTeacher(Long id , Teacher teacher) {
 
         dao.updateTeacher(id,teacher);
     }

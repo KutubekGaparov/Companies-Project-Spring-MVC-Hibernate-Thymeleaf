@@ -9,12 +9,12 @@ public interface CourseDao {
 
     Course saveCourse(Course course);
 
-    void removeCourseById(long id);
+    void removeCourseById(Long id);
 
-    Course getById(long id);
+    Course getById(Long id);
 
     List<Course> getAllCourse();
 
-    void updateCourse(long id, Course course);
+    void updateCourse(Long id, Course course);
 
 }

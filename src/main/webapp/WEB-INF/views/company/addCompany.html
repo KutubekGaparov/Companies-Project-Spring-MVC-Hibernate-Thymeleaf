@@ -8,6 +8,7 @@
 <body>
 
 <form th:method="POST" th:action="@{save}" th:object="${company}">
+
     <label for="companyName">Enter CompanyName</label>
     <input type="text" th:field="*{companyName}" id="companyName"/>
     <br>

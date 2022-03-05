@@ -14,9 +14,10 @@ public class Student {
     String firstName;
     String lastName;
     String email;
+
     StudyFormat studyFormat;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "group_id")
     private Group groups;
 
@@ -68,14 +69,6 @@ public class Student {
 
     public void setStudyFormat(StudyFormat studyFormat) {
         this.studyFormat = studyFormat;
-    }
-
-    public Group getGroup() {
-        return groups;
-    }
-
-    public void setGroup(Group group) {
-        this.groups = group;
     }
 
     public Group getGroups() {

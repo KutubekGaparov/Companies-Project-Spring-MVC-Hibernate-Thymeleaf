@@ -26,12 +26,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void removeGroupById(long id) {
+    public void removeGroupById(Long id) {
         dao.removeGroupById(id);
     }
 
     @Override
-    public Group getById(long id) {
+    public Group getById(Long id) {
         return dao.getById(id);
     }
 
@@ -41,7 +41,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void updateGroup(long id, Group group) {
+    public void updateGroup(Long id, Group group) {
         dao.updateGroup( id,group);
     }
 }

@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getById(long id) {
+    public Student getById(Long id) {
         return dao.getById(id);
     }
 
@@ -42,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public void updateStudent( long id,Student student) {
+    public void updateStudent( Long id,Student student) {
 
         dao.updateStudent(id,student);
     }

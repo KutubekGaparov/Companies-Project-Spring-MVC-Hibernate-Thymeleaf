@@ -8,11 +8,11 @@ public interface CompanyService {
 
     Company saveCompany(Company company);
 
-    void removeCompanyById(long id);
+    void removeCompanyById(Long id);
 
-    public Company getById(long id);
+    public Company getById(Long id);
 
     public List<Company> getAllCompany();
 
-    void update(long id,Company company);
+    void update(Long id,Company company);
 }

@@ -23,12 +23,12 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public void removeTeacherById(long id) {
+    public void removeTeacherById(Long id) {
         entityManager.remove(getById(id));
     }
 
     @Override
-    public Teacher getById(long id) {
+    public Teacher getById(Long id) {
         return entityManager.find(Teacher.class,id);
     }
 
@@ -38,7 +38,7 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public void updateTeacher(long id ,Teacher teacher) {
+    public void updateTeacher(Long id ,Teacher teacher) {
         Teacher teacher1 = getById(id);
         teacher1.setFirstName(teacher.getFirstName());
         teacher1.setLastName(teacher.getLastName());
