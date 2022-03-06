@@ -8,14 +8,16 @@
 <body>
 edit
 
-<form th:method="PATCH" th:action="@{/api/{id}(id=${course.getId()})}" th:object="${course}">
+<form th:method="PATCH" th:action="@{/courses/{id}(id=${course.getId()})}" th:object="${course}">
+
     <label for="courseName">Enter CourseName</label>
     <input type="text" th:field="*{courseName}" id="courseName"/>
     <br>
+
     <label for="duration">Enter Duration</label>
     <input type="text" th:field="*{duration}" id="duration"/>
     <br>
-  <br>
+    <br>
     <input type="submit" value="Update!!"/>
 </form>
 

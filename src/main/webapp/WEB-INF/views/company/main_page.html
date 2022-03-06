@@ -22,17 +22,11 @@
     </tr>
     <tbody th:each="company: ${run}">
     <tr>
+        <td><p th:text="${company.getId()}"></p></td>
+        <td><p th:text="${company.getCompanyName()}"></p></td>
+        <td><p th:text="${company.getLocatedCountry()}"></p></td>
         <td>
-            <p th:text="${company.getId()}"></p>
-        </td>
-        <td>
-            <p th:text="${company.getCompanyName()}"></p>
-        </td>
-        <td>
-            <p th:text="${company.getLocatedCountry()}"></p>
-        </td>
-        <td>
-            <a href="/api">Course</a>
+            <a th:href="@{/courses(companyId=${company.id})}">Course</a>
         </td>
         <td>
             <a th:href="@{/{id}/edit(id=${company.getId()})}">

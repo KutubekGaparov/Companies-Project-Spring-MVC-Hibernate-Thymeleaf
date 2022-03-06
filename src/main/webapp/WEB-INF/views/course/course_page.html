@@ -16,38 +16,34 @@
         <th>Id</th>
         <th>CourseName</th>
         <th>Duration</th>
+        <th>Groups</th>
+        <th>Teachers</th>
         <th></th>
         <th></th>
     </tr>
-    <tbody th:each="course: ${courses}">
+    <tbody th:each="courses: ${course}">
     <tr>
+        <td><p th:text="${courses.getId()}"></p></td>
+        <td><p th:text="${courses.getCourseName()}"></p></td>
+        <td><p th:text="${courses.getDuration()}"></p></td>
+
+        <td><a href="/groups">Groups</a></td>
         <td>
-            <p th:text="${course.getId()}"></p>
+            <a th:href="@{/teachers(courseId=${courses.id})}">Teachers</a>
         </td>
         <td>
-            <p th:text="${course.getCourseName()}"></p>
+            <a th:href="@{/courses/{id}/edit(id=${courses.getId()})}">
+                <input type="submit" value="Update"></a>
         </td>
         <td>
-            <p th:text="${course.getDuration()}"></p>
-        </td>
-        <td>
-            <a href="/groups">Groups</a>
-        </td>
-        <td>
-            <a th:href="@{/api/{id}/edit(id=${course.getId()})}">
-                <input type="submit" value="Update">
-            </a>
-        </td>
-        <td>
-            <form th:method="DELETE" th:action="@{/api/{id}(id =${course.getId()})}">
-                <input type="submit" value="Delete"/>
-            </form>
+            <form th:method="DELETE" th:action="@{/courses/{id}(id =${courses.getId()})}">
+                <input type="submit" value="Delete"/></form>
         </td>
     </tr>
     </tbody>
 </table>
 <hr>
-<a href="/api/newCourse">Create new Course</a>
+<a th:href="@{/courses/newCourse(companyId=${param.companyId})}">Create new Course</a>
 <hr>
 <a href="/">Main</a>
 

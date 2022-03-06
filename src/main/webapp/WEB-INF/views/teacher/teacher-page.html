@@ -20,36 +20,26 @@
         <th></th>
         <th></th>
     </tr>
-    <tbody th:each="teacher: ${good}">
+    <tbody th:each="teacher: ${teachers}">
     <tr>
+        <td><p th:text="${teacher.getId()}"></p></td>
+        <td><p th:text="${teacher.getFirstName()}"></p></td>
+        <td><p th:text="${teacher.getLastName()}"></p></td>
+        <td><p th:text="${teacher.getEmail()}"></p></td>
         <td>
-            <p th:text="${teacher.getId()}"></p>
+            <a th:href="@{/teachers/{id}/edit(id=${teacher.getId()})}">
+                <input type="submit" value="Update"></a>
         </td>
         <td>
-            <p th:text="${teacher.getFirstName()}"></p>
-        </td>
-        <td>
-            <p th:text="${teacher.getLastName()}"></p>
-        </td>
-        <td>
-            <p th:text="${teacher.getEmail()}"></p>
-        </td>
-        <td>
-            <a th:href="@{/good/{id}/edit(id=${teacher.getId()})}">
-                <input type="submit" value="Update">
-            </a>
-        </td>
-        <td>
-            <form th:method="DELETE" th:action="@{/good/{id}(id =${teacher.getId()})}">
-                <input type="submit" value="Delete"/>
-            </form>
+            <form th:method="DELETE" th:action="@{/teachers/{id}(id =${teacher.getId()})}">
+                <input type="submit" value="Delete"/></form>
         </td>
     </tr>
     </tbody>
 </table>
 <hr>
-<a href="/good/newTeacher">Create new Teacher</a>
+<a th:href="@{/teachers/newTeacher(courseId=${param.courseId})}">Create new Teacher</a>
 <br>
-<a href="/groups">Back</a>
+<a th:href="@{/courses}">Back</a>
 </body>
 </html>

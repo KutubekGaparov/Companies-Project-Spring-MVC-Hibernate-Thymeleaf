@@ -8,13 +8,13 @@ import java.util.List;
 public interface GroupDao {
     Group saveGroup(Group group);
 
-    void removeGroupById(long id);
+    void removeGroupById(Long id);
 
-    Group getById(long id);
+    Group getById(Long id);
 
     List<Group> getAllGroup();
 
     void cleanGroupTable();
 
-    void updateGroup(long id ,Group group);
+    void updateGroup(Long id ,Group group);
 }

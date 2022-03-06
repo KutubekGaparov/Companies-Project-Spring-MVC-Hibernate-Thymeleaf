@@ -24,12 +24,12 @@ public class CourseDaoImpl implements CourseDao{
     }
 
     @Override
-    public void removeCourseById(long id) {
+    public void removeCourseById(Long id) {
         entityManager.remove(getById(id));
     }
 
     @Override
-    public Course getById(long id) {
+    public Course getById(Long id) {
         return entityManager.find(Course.class,id);
     }
 
@@ -39,7 +39,7 @@ public class CourseDaoImpl implements CourseDao{
     }
 
     @Override
-    public void updateCourse(long id, Course course) {
+    public void updateCourse(Long id, Course course) {
         Course course1= getById(id);
         course1.setCourseName(course.getCourseName());
         course1.setDuration(course.getDuration());

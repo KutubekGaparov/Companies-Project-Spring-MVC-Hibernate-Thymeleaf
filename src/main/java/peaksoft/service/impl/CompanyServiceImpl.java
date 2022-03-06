@@ -28,12 +28,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void removeCompanyById(long id) {
+    public void removeCompanyById(Long id) {
         dao.removeCompanyById(id);
     }
 
     @Override
-    public Company getById(long id) {
+    public Company getById(Long id) {
         return dao.getById(id);
     }
 
@@ -43,7 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void update(long id,Company company) {
+    public void update(Long id,Company company) {
         dao.update(id,company);
     }
 }

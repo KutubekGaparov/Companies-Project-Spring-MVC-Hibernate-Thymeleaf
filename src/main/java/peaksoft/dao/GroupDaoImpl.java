@@ -21,12 +21,12 @@ public class GroupDaoImpl implements GroupDao{
     }
 
     @Override
-    public void removeGroupById(long id) {
+    public void removeGroupById(Long id) {
         entityManager.remove(getById(id));
     }
 
     @Override
-    public Group getById(long id) {
+    public Group getById(Long id) {
         return entityManager.find(Group.class,id);
     }
 
@@ -41,7 +41,7 @@ public class GroupDaoImpl implements GroupDao{
     }
 
     @Override
-    public void updateGroup(long id, Group group) {
+    public void updateGroup(Long id, Group group) {
         Group group1 = getById(id);
         group1.setGroupName(group.getGroupName());
         group1.setDateOfStart(group.getDateOfStart());

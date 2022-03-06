@@ -27,12 +27,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void removeCourseById(long id) {
+    public void removeCourseById(Long id) {
         courseDao.removeCourseById(id);
     }
 
     @Override
-    public Course getById(long id) {
+    public Course getById(Long id) {
         return courseDao.getById(id);
     }
 
@@ -42,7 +42,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourse(long id, Course course) {
+    public void updateCourse(Long id, Course course) {
         courseDao.updateCourse(id,course);
     }
 }

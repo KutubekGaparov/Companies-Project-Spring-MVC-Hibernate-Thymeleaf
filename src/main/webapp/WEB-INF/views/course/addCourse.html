@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Course</title>
 </head>
 <body>
+<div class="center" style="text-align:center; margin-top:200px; font-size: 30px;">
+    <form
+            action="#"
+            th:action="@{/courses/save(companyId=${param.companyId})}"
+            th:object="${course}" method="post">
 
-<form th:method="POST" th:action="@{save}" th:object="${course}">
+        <input type="hidden" name="id" th:field="*{id}">
 
-    <label for="courseName">Enter CourseName</label>
-    <input type="text" th:field="*{courseName}" id="courseName"/>
-    <br>
-    <label for="locationCountry">Enter Duration</label>
-    <input type="text" th:field="*{duration}" id="locationCountry"/>
-    <br>
-    <br>
-    <input type="submit" value="Create">
-
-</form>
+        <input type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name">
+        <br><br>
+        <input type="text" name="durationInMonth" th:field="*{duration}" placeholder="Duration">
+        <br><br>
+        <input type="submit" value="Add">
+    </form>
+</div>
 
 </body>
 </html>

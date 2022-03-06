@@ -13,7 +13,7 @@ public class Course {
     private String courseName;
     private String duration;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "company_id")
     private Company company;
 
@@ -23,8 +23,8 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Group> group;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id")
+    @OneToOne(mappedBy = "course",
+            cascade = CascadeType.ALL)
     private Teacher teacher;
 
     public Course() {

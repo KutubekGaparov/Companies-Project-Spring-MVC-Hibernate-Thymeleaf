@@ -18,29 +18,17 @@
         <th>DateOfStart</th>
         <th>DateOfFinish</th>
         <th>Students</th>
-        <th>Teachers</th>
         <th></th>
         <th></th>
     </tr>
     <tbody th:each="groupName: ${addGroup}">
     <tr>
+        <td><p th:text="${groupName.getId()}"></p></td>
+        <td><p th:text="${groupName.getGroupName()}"></p></td>
+        <td><p th:text="${groupName.getDateOfStart()}"></p></td>
+        <td><p th:text="${groupName.getDateOfFinish()}"></p></td>
         <td>
-            <p th:text="${groupName.getId()}"></p>
-        </td>
-        <td>
-            <p th:text="${groupName.getGroupName()}"></p>
-        </td>
-        <td>
-            <p th:text="${groupName.getDateOfStart()}"></p>
-        </td>
-        <td>
-            <p th:text="${groupName.getDateOfFinish()}"></p>
-        </td>
-        <td>
-            <a href="/students">Students</a>
-        </td>
-        <td>
-            <a href="/good">Teachers</a>
+            <a th:href="@{/students(groupId=${groupName.id})}">Students</a>
         </td>
         <td>
             <a th:href="@{/groups/{id}/edit(id=${groupName.getId()})}">
@@ -58,6 +46,6 @@
 <hr>
 <a href="/groups/newGroups">Create new Group</a>
 <br>
-<a href="/api">Back</a>
+<a th:href="@{/courses}">Back</a>
 </body>
 </html>
