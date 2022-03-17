@@ -1,8 +1,6 @@
 package peaksoft.dao;
 
-import peaksoft.model.Company;
 import peaksoft.model.Course;
-
 import java.util.List;
 
 public interface CourseDao {
@@ -15,6 +13,6 @@ public interface CourseDao {
 
     List<Course> getAllCourse();
 
-    void updateCourse(Long id, Course course);
+    void updateCourse( Course course);
 
 }

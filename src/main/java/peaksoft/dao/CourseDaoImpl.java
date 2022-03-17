@@ -1,9 +1,7 @@
 package peaksoft.dao;
 
 import org.springframework.stereotype.Repository;
-import peaksoft.model.Company;
 import peaksoft.model.Course;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -16,10 +14,9 @@ public class CourseDaoImpl implements CourseDao{
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
     public Course saveCourse(Course course) {
-         entityManager.persist(course);
+         entityManager.merge(course);
          return course;
     }
 
@@ -39,10 +36,7 @@ public class CourseDaoImpl implements CourseDao{
     }
 
     @Override
-    public void updateCourse(Long id, Course course) {
-        Course course1= getById(id);
-        course1.setCourseName(course.getCourseName());
-        course1.setDuration(course.getDuration());
+    public void updateCourse( Course course) {
         entityManager.merge(course);
     }
 }

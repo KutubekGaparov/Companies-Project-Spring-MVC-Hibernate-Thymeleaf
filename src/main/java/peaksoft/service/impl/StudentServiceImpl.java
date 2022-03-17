@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.StudentDao;
 import peaksoft.model.Student;
-import peaksoft.service.interfase.StudentService;
+import peaksoft.service.StudentService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -40,10 +40,8 @@ public class StudentServiceImpl implements StudentService {
         return dao.getAllStudent();
     }
 
-
     @Override
     public void updateStudent( Long id,Student student) {
-
         dao.updateStudent(id,student);
     }
 }

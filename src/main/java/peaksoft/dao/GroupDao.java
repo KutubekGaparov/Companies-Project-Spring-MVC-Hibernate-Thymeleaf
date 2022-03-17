@@ -14,7 +14,5 @@ public interface GroupDao {
 
     List<Group> getAllGroup();
 
-    void cleanGroupTable();
-
     void updateGroup(Long id ,Group group);
 }

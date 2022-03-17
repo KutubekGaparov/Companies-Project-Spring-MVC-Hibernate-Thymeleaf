@@ -23,8 +23,8 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public void removeTeacherById(Long id) {
-        entityManager.remove(getById(id));
+    public void removeTeacherById(Teacher teacher) {
+        entityManager.remove(entityManager.contains(teacher) ? teacher : entityManager.merge(teacher));
     }
 
     @Override

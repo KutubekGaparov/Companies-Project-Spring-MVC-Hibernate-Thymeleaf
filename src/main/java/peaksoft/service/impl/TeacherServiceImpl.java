@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.TeacherDao;
 import peaksoft.model.Teacher;
-import peaksoft.service.interfase.TeacherService;
+import peaksoft.service.TeacherService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,8 +26,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void removeTeacherById(Long id) {
-        dao.removeTeacherById(id);
+    public void removeTeacherById(Teacher teacher) {
+        dao.removeTeacherById(teacher);
     }
 
     @Override
@@ -40,10 +40,8 @@ public class TeacherServiceImpl implements TeacherService {
         return dao.getAllTeacher();
     }
 
-
     @Override
-    public void updateTeacher(Long id , Teacher teacher) {
-
-        dao.updateTeacher(id,teacher);
+    public void updateTeacher(Long id, Teacher teacher) {
+        dao.updateTeacher(id, teacher);
     }
 }

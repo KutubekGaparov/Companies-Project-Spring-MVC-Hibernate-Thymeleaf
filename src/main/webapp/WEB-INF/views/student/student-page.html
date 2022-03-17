@@ -28,12 +28,12 @@
         <td><p th:text="${student.getEmail()}"></p></td>
         <td><p th:text="${student.getStudyFormat()}"></p></td>
         <td>
-            <a th:href="@{/students/{id}/edit(id=${student.getId()})}">
+            <a th:href="@{/students/{id}/edit(id=${student.id},groupId=${param.groupId})}">
                 <input type="submit" value="Update">
             </a>
         </td>
         <td>
-            <form th:method="DELETE" th:action="@{/students/{id}(id =${student.getId()})}">
+            <form th:method="DELETE" th:action="@{/students/{id}/delete(id=${student.id},groupId=${param.groupId})}">
                 <input type="submit" value="Delete"/>
             </form>
         </td>
@@ -41,8 +41,8 @@
     </tbody>
 </table>
 <hr>
-<a th:href="@{/students/new(groupId=${param.groupId})}">Create new Student</a>
+<a th:href="@{/students/newStudent(groupId=${param.groupId})}">Create new Student</a>
 <br>
-<a th:href="@{/groups}">Back</a>
+<a href="/">Main</a>
 </body>
 </html>

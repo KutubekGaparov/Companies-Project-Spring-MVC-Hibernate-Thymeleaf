@@ -1,8 +1,6 @@
-package peaksoft.service.interfase;
+package peaksoft.service;
 
-import peaksoft.model.Course;
 import peaksoft.model.Student;
-
 import java.util.List;
 
 public interface StudentService {

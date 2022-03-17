@@ -1,8 +1,20 @@
 package peaksoft.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "course")
 public class Course {
@@ -13,75 +25,16 @@ public class Course {
     private String courseName;
     private String duration;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "company_id")
+    @ManyToOne
     private Company company;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "group_course",
-            joinColumns = @JoinColumn(name ="group_id" ),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private List<Group> group;
+    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "courseList", cascade = {CascadeType.MERGE, CascadeType.REMOVE} )
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Group> groupList;
 
     @OneToOne(mappedBy = "course",
-            cascade = CascadeType.ALL)
+            cascade = CascadeType.REMOVE)
     private Teacher teacher;
-
-    public Course() {
-    }
-
-    public Course(String courseName, String duration) {
-        this.courseName = courseName;
-        this.duration = duration;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public List<Group> getGroup() {
-        return group;
-    }
-
-    public void setGroup(List<Group> group) {
-        this.group = group;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
 
     @Override
     public String toString() {
@@ -90,7 +43,7 @@ public class Course {
                 ", courseName='" + courseName + '\'' +
                 ", duration='" + duration + '\'' +
                 ", company=" + company +
-                ", group=" + group +
+                ", group=" + groupList +
                 ", teacher=" + teacher +
                 '}';
     }

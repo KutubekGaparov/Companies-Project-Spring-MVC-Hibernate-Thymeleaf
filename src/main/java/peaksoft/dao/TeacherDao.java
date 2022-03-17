@@ -6,7 +6,7 @@ import java.util.List;
 public interface TeacherDao {
     Teacher saveTeacher(Teacher teacher);
 
-    void removeTeacherById(Long id);
+    void removeTeacherById(Teacher teacher);
 
     Teacher getById(Long id);
 

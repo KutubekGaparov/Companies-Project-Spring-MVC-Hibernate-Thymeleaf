@@ -1,4 +1,4 @@
-package peaksoft.service.interfase;
+package peaksoft.service;
 
 import peaksoft.model.Group;
 

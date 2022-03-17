@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.model.Course;
 import peaksoft.model.Teacher;
-import peaksoft.service.interfase.CourseService;
-import peaksoft.service.interfase.TeacherService;
+import peaksoft.service.CourseService;
+import peaksoft.service.TeacherService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +25,15 @@ public class TeacherController {
     }
 
     @GetMapping()
-    public String index(@RequestParam("courseId") Long courseId,Model model) {
+    public String index(@RequestParam("courseId") Long courseId, Model model) {
         List<Teacher> teachers = new ArrayList<>();
-        try{
-            for(Teacher i : service.getAllTeacher()){
-                if(i.getCourse().getId().equals(courseId)){
+        try {
+            for (Teacher i : service.getAllTeacher()) {
+                if (i.getCourse().getId().equals(courseId)) {
                     teachers.add(i);
                 }
             }
-        }
-        catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("It is empty!");
         }
         model.addAttribute("teachers", teachers);
@@ -43,33 +41,34 @@ public class TeacherController {
     }
 
     @GetMapping("/newTeacher")
-    public String company(@RequestParam("courseId") Long courseId,Model model) {
+    public String company(@RequestParam("courseId") Long courseId, Model model) {
         model.addAttribute("teacher", new Teacher());
         return "/teacher/newTeacher";
     }
 
-    @PostMapping("/save")
-    public String getCompany(@ModelAttribute("teacher") Teacher teacher,@RequestParam("courseId") Long id) {
+    @PostMapping("/saveTeacher")
+    public String getCompany(@ModelAttribute("teacher") Teacher teacher, @RequestParam("courseId") Long id) {
         teacher.setCourse(courseService.getById(id));
         service.saveTeacher(teacher);
-        return "redirect:/teachers?courseId="+id;
+        return "redirect:/teachers?courseId=" + id;
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id ) {
+    public String edit(Model model, @PathVariable("id") Long id) {
         model.addAttribute("teacher", service.getById(id));
         return "/teacher/update";
     }
 
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("teacher") Teacher teacher, @PathVariable("id") Long id) {
+    @PatchMapping("/{id}/update")
+    public String update(@ModelAttribute("teacher") Teacher teacher, @PathVariable("id") Long id, @RequestParam("courseId") Long courseId) {
+        teacher.setCourse(courseService.getById(courseId));
         service.updateTeacher(id, teacher);
-        return "redirect:/teachers";
+        return "redirect:/teachers?courseId=" + courseId;
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        service.removeTeacherById(id);
-        return "redirect:/teachers";
+    @DeleteMapping("/{id}/delete")
+    public String delete(@RequestParam("courseId") Long courseId, @PathVariable("id") Long teacherId) {
+        service.removeTeacherById(service.getById(teacherId));
+        return "redirect:/teachers?courseId=" + courseId;
     }
 }

@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.model.Company;
-import peaksoft.service.interfase.CompanyService;
+import peaksoft.service.CompanyService;
 
 @Controller
-@RequestMapping
 public class CompanyController {
 
     private final CompanyService service;
@@ -20,7 +19,7 @@ public class CompanyController {
 
     @GetMapping("/")
     public String getAllCompany(Model model) {
-        model.addAttribute("run", service.getAllCompany());
+        model.addAttribute("companies", service.getAllCompany());
         return "/company/main_page";
     }
 
@@ -43,15 +42,14 @@ public class CompanyController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("company") Company company, @PathVariable("id") long id) {
+    public String update(@ModelAttribute("company") Company company, @PathVariable("id") Long id) {
         service.update(id, company);
         return "redirect:/";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
+    public String delete(@PathVariable("id") Long id) {
         service.removeCompanyById(id);
         return "redirect:/";
     }
-
 }

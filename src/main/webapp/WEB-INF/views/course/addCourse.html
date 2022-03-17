@@ -6,21 +6,17 @@
     <title>Add Course</title>
 </head>
 <body>
-<div class="center" style="text-align:center; margin-top:200px; font-size: 30px;">
-    <form
-            action="#"
-            th:action="@{/courses/save(companyId=${param.companyId})}"
-            th:object="${course}" method="post">
 
-        <input type="hidden" name="id" th:field="*{id}">
+<form action="#" th:action="@{/courses/saveCourse(companyId=${param.companyId})}" th:object="${course}" method="post">
 
-        <input type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name">
-        <br><br>
-        <input type="text" name="durationInMonth" th:field="*{duration}" placeholder="Duration">
-        <br><br>
-        <input type="submit" value="Add">
-    </form>
-</div>
+    <input type="hidden" name="id" th:field="*{id}">
+
+    <input type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name">
+    <br><br>
+    <input type="text" name="durationInMonth" th:field="*{duration}" placeholder="Duration">
+    <br><br>
+    <input type="submit" value="OK">
+</form>
 
 </body>
 </html>

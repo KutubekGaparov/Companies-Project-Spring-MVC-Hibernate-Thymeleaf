@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.model.Student;
-import peaksoft.model.Teacher;
-import peaksoft.service.interfase.GroupService;
-import peaksoft.service.interfase.StudentService;
+import peaksoft.service.GroupService;
+import peaksoft.service.StudentService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,22 +37,21 @@ public class StudentController {
         catch(NullPointerException e){
             System.out.println("It is empty!");
         }
-
         model.addAttribute("students", students);
         return "/student/student-page";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/newStudent")
     public String saveStudent(@RequestParam("groupId") Long groupId,Model model) {
         model.addAttribute("student", new Student());
         return "/student/newStudent";
     }
 
-    @PostMapping("/save")
-    public String createStudent(@ModelAttribute("student") Student student, @RequestParam("groupId") Long id) {
-        student.setGroups(groupService.getById(id));
+    @PostMapping("/saveStudent")
+    public String createStudent(@ModelAttribute("student") Student student, @RequestParam("groupId") Long courseId) {
+        student.setGroups(groupService.getById(courseId));
         service.saveStudent(student);
-        return "redirect:/students?groupId"+id;
+        return "redirect:/students?groupId="+courseId;
     }
 
     @GetMapping("/{id}/edit")
@@ -63,14 +61,15 @@ public class StudentController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("student") Student student, @PathVariable("id") Long id) {
+    public String update(@ModelAttribute("student") Student student, @PathVariable("id") Long id,@RequestParam("groupId") Long groupId) {
+        student.setGroups(groupService.getById(groupId));
         service.updateStudent(id, student);
-        return "redirect:/students";
+        return "redirect:/students?groupId="+groupId;
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Long id) {
+    @DeleteMapping("/{id}/delete")
+    public String delete(@PathVariable("id") Long id,@RequestParam("groupId") Long groupId) {
         service.removeStudentById(id);
-        return "redirect:/students";
+        return "redirect:/students?groupId="+groupId;
     }
 }

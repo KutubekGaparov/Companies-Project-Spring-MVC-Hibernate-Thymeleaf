@@ -1,8 +1,17 @@
 package peaksoft.model;
 
+import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "groups")
 public class Group {
@@ -14,73 +23,15 @@ public class Group {
     private String dateOfStart;
     private String dateOfFinish;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "group_course",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private List<Course> course;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private List<Course> courseList;
 
-    @OneToMany(mappedBy = "groups"
-            , cascade = CascadeType.ALL)
-    private List<Student> student;
+    @OneToMany(mappedBy = "groups", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Student> students;
 
-    public Group() {
-    }
-
-    public Group(String groupName, String dateOfStart, String dateOfFinish) {
-        this.groupName = groupName;
-        this.dateOfStart = dateOfStart;
-        this.dateOfFinish = dateOfFinish;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public String getDateOfStart() {
-        return dateOfStart;
-    }
-
-    public void setDateOfStart(String dateOfStart) {
-        this.dateOfStart = dateOfStart;
-    }
-
-    public String getDateOfFinish() {
-        return dateOfFinish;
-    }
-
-    public void setDateOfFinish(String dateOfFinish) {
-        this.dateOfFinish = dateOfFinish;
-    }
-
-    public List<Course> getCourse() {
-        return course;
-    }
-
-    public void setCourse(List<Course> course) {
-        this.course = course;
-    }
-
-    public List<Student> getStudent() {
-        return student;
-    }
-
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
-
+    @ManyToOne
+    private Company company;
 
     @Override
     public String toString() {
@@ -89,8 +40,9 @@ public class Group {
                 ", groupName='" + groupName + '\'' +
                 ", dateOfStart='" + dateOfStart + '\'' +
                 ", dateOfFinish='" + dateOfFinish + '\'' +
-                ", course=" + course +
-                ", student=" + student +
+                ", courseList=" + courseList +
+                ", student=" + students +
+                ", company=" + company +
                 '}';
     }
 }

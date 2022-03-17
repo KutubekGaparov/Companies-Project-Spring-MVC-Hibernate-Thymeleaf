@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.CompanyDao;
 import peaksoft.model.Company;
-import peaksoft.service.interfase.CompanyService;
+import peaksoft.service.CompanyService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,7 +19,6 @@ public class CompanyServiceImpl implements CompanyService {
     public CompanyServiceImpl(CompanyDao dao) {
         this.dao = dao;
     }
-
 
     @Override
     public Company saveCompany(Company company) {

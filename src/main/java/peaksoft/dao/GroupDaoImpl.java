@@ -16,7 +16,7 @@ public class GroupDaoImpl implements GroupDao{
 
     @Override
     public Group saveGroup(Group group) {
-        entityManager.persist(group);
+        entityManager.merge(group);
         return group;
     }
 
@@ -33,11 +33,6 @@ public class GroupDaoImpl implements GroupDao{
     @Override
     public List<Group> getAllGroup() {
         return entityManager.createQuery("select g from Group g",Group.class).getResultList();
-    }
-
-    @Override
-    public void cleanGroupTable() {
-        entityManager.clear();
     }
 
     @Override

@@ -3,9 +3,8 @@ package peaksoft.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.dao.CourseDao;
-import peaksoft.model.Company;
 import peaksoft.model.Course;
-import peaksoft.service.interfase.CourseService;
+import peaksoft.service.CourseService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -22,8 +21,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course saveCourse(Course course) {
-        return courseDao.saveCourse(course);
+    public Course saveCourse(Course course/*,Long id*/) {
+        return courseDao.saveCourse(course/*,id*/);
     }
 
     @Override
@@ -42,7 +41,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourse(Long id, Course course) {
-        courseDao.updateCourse(id,course);
+    public void updateCourse( Course course) {
+        courseDao.updateCourse(course);
     }
 }

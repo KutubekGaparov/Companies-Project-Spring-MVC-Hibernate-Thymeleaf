@@ -10,7 +10,6 @@
     </style>
 </head>
 <body>
-
 <table>
     <tr>
         <th>Id</th>
@@ -19,8 +18,9 @@
         <th></th>
         <th></th>
         <th></th>
+        <th></th>
     </tr>
-    <tbody th:each="company: ${run}">
+    <tbody th:each="company: ${companies}">
     <tr>
         <td><p th:text="${company.getId()}"></p></td>
         <td><p th:text="${company.getCompanyName()}"></p></td>
@@ -29,12 +29,15 @@
             <a th:href="@{/courses(companyId=${company.id})}">Course</a>
         </td>
         <td>
+            <a th:href="@{/getGroups(companyId=${company.id})}">Groups</a>
+        </td>
+        <td>
             <a th:href="@{/{id}/edit(id=${company.getId()})}">
                 <input type="submit" value="Update">
             </a>
         </td>
         <td>
-            <form th:method="DELETE" th:action="@{/{id}(id =${company.getId()})}">
+            <form th:method="DELETE" th:action="@{/{id}(id=${company.getId()})}">
                 <input class="button" type="submit" value="Delete"/>
             </form>
         </td>
@@ -43,5 +46,6 @@
 </table>
 <hr>
 <a href="/newCompany">Create new Company</a>
+
 </body>
 </html>

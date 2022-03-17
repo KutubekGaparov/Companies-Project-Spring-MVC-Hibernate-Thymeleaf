@@ -1,4 +1,4 @@
-package peaksoft.service.interfase;
+package peaksoft.service;
 
 import peaksoft.model.Company;
 
@@ -10,9 +10,9 @@ public interface CompanyService {
 
     void removeCompanyById(Long id);
 
-    public Company getById(Long id);
+    Company getById(Long id);
 
-    public List<Company> getAllCompany();
+    List<Company> getAllCompany();
 
-    void update(Long id,Company company);
+    void update(Long id, Company company);
 }
